@@ -199,8 +199,7 @@ To ensure the project runs smoothly, make sure you have the following libraries 
 
 Add any other dependencies to `requirements.txt`.
 
-## License
 
-This project is licensed under the MIT License.
+
 
 
