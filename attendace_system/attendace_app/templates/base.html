@@ -1,0 +1,165 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{% block title %}Smart Attendance{% endblock %}</title>
+  <link rel="stylesheet" href="{% static 'css/styles.css' %}" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(to right, #121212, #1e1e1e);
+      color: #f4f4f4;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    .navbar {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: #1f1f1f;
+      padding: 1rem 2rem;
+      border-bottom: 1px solid #333;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 1000;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+    }
+
+    .navbar .brand {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: #ffffff;
+    }
+
+    .navbar .auth-buttons a {
+      color: #fff;
+      text-decoration: none;
+      margin: 0 10px;
+      font-weight: 600;
+      border: 2px solid #fff;
+      border-radius: 30px;
+      padding: 8px 18px;
+      transition: 0.3s ease;
+    }
+
+    .navbar .auth-buttons a:hover {
+      background: #fff;
+      color: #000;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: 7rem auto 2rem auto;
+      padding: 2.5rem;
+      background: #f8f9fa;
+      border-radius: 20px;
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.25);
+      text-align: center;
+      animation: fadeIn 1.2s ease-in-out;
+      color: #222;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    h1 {
+      margin-bottom: 1rem;
+      font-size: 2.3rem;
+      color: #1a1a1a;
+    }
+
+    p {
+      font-size: 1.1rem;
+      margin-bottom: 2rem;
+      color: #444;
+    }
+
+    .login-options {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .login-btn {
+      background: #ffffff;
+      color: #1a1a1a;
+      text-decoration: none;
+      padding: 0.9rem 1.5rem;
+      font-weight: 600;
+      border-radius: 30px;
+      transition: all 0.3s ease;
+      border: 2px solid #ddd;
+    }
+
+    .login-btn:hover {
+      background: #1a1a1a;
+      color: #fff;
+      transform: scale(1.05);
+    }
+
+    .login-btn::before {
+      content: attr(data-icon);
+      margin-right: 10px;
+    }
+
+    @media (max-width: 640px) {
+      .container {
+        margin: 6rem 1rem 2rem 1rem;
+        padding: 2rem;
+      }
+
+      .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 1rem;
+      }
+
+      .navbar .auth-buttons {
+        margin-top: 10px;
+        display: flex;
+        flex-wrap: wrap;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="navbar">
+    <div class="brand">Smart Attendance</div>
+    <div class="auth-buttons">
+      <a href="register-teacher/">Register Teacher</a>
+     
+    </div>
+  </div>
+
+  {% block content %}
+  <div class="container">
+    <h1>Welcome 🎉</h1>
+    <p>Please select your role to get started</p>
+
+    <div class="login-options">
+      <a href="{% url 'admin_login' %}" class="login-btn" data-icon="🛠">Admin Login</a>
+      <a href="{% url 'teacher_login' %}" class="login-btn" data-icon="👩‍🏫">Teacher Login</a>
+      <a href="{% url 'student_login' %}" class="login-btn" data-icon="🎓">Student Login</a>
+    </div>
+  </div>
+  {% endblock %}
+
+</body>
+</html>

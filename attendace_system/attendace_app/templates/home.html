@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block title %}Home - Attendance System{% endblock %}
+
+{% block content %}
+<div class="text-center">
+    <h1 class="mb-4">Welcome to the Attendance System</h1>
+    <p class="lead">Please select your role to log in:</p>
+
+    <div class="d-flex justify-content-center gap-3 mt-4">
+        <a href="{% url 'admin_login' %}" class="btn btn-primary">Admin Login</a>
+        <a href="{% url 'teacher_login' %}" class="btn btn-success">Teacher Login</a>
+        <a href="{% url 'student_login' %}" class="btn btn-info text-white">Student Login</a>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,129 @@
+{% extends 'base.html' %}
+
+{% block title %}Student Register{% endblock %}
+
+{% block content %}
+<style>
+  .container {
+    max-width: 600px;
+    margin: 7rem auto 2rem auto;
+    padding: 2.5rem;
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(12px);
+    border-radius: 20px;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+    text-align: center;
+    animation: fadeIn 1s ease-in-out;
+    color: #f5f5f5;
+  }
+
+  h2 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    color: #fff;
+  }
+
+  .form-group {
+    margin-bottom: 1.5rem;
+    text-align: left;
+  }
+
+  .form-group label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: #ccc;
+  }
+
+  .form-group input[type="text"],
+  .form-group input[type="file"] {
+    width: 100%;
+    padding: 0.75rem;
+    border-radius: 12px;
+    border: none;
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    font-size: 1rem;
+    transition: background 0.3s ease;
+  }
+
+  .form-group input[type="text"]:focus,
+  .form-group input[type="file"]:focus {
+    outline: none;
+    background: rgba(255, 255, 255, 0.2);
+  }
+
+  .form-group button {
+    width: 100%;
+    padding: 0.9rem;
+    background: #00c6ff;
+    color: #fff;
+    font-weight: 600;
+    border: none;
+    border-radius: 30px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+  }
+
+  .form-group button:hover {
+    background: #0072ff;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 114, 255, 0.3);
+  }
+
+  .message {
+    margin-top: 1rem;
+    background: rgba(0, 255, 170, 0.1);
+    border-left: 4px solid #00ffaa;
+    padding: 1rem;
+    border-radius: 10px;
+    color: #afffff;
+    font-weight: 500;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @media (max-width: 640px) {
+    .container {
+      margin: 6rem 1rem 2rem 1rem;
+      padding: 2rem;
+    }
+  }
+</style>
+
+<div class="container">
+  <h2 data-icon="🎓">🎓 Register Student</h2>
+  <form action="{% url 'register_student' %}" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="form-group">
+      <label for="full_name">Full Name:</label>
+      <input type="text" id="full_name" name="full_name" required>
+    </div>
+    <div class="form-group">
+      <label for="roll_no">Roll Number:</label>
+      <input type="text" id="roll_no" name="roll_no" required>
+    </div>
+    <div class="form-group">
+      <label for="image">Student Image:</label>
+      <input type="file" id="image" name="image" accept="image/*" required>
+    </div>
+    <div class="form-group">
+      <button type="submit">Register Student</button>
+    </div>
+  </form>
+
+  {% if message %}
+  <div class="message">{{ message }}</div>
+  {% endif %}
+</div>
+{% endblock %}

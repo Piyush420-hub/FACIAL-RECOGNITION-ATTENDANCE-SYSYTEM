@@ -1,0 +1,28 @@
+<!-- templates/attendance.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Attendance</title>
+</head>
+<body>
+    <h1>Today's Attendance</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Student</th>
+                <th>Status</th>
+                <th>Timestamp</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for record in attendance %}
+            <tr>
+                <td>{{ record.student.full_name }}</td>
+                <td>{{ record.status }}</td>
+                <td>{{ record.timestamp }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

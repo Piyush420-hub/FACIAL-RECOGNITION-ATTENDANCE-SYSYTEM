@@ -1,0 +1,86 @@
+{% extends 'base.html' %}
+
+{% block title %}Teacher Dashboard{% endblock %}
+
+{% block content %}
+<style>
+  .dashboard-container {
+    max-width: 800px;
+    margin: 7rem auto 2rem auto;
+    padding: 2.5rem;
+    background: rgba(255, 255, 255, 0.07);
+    border-radius: 20px;
+    backdrop-filter: blur(12px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35);
+    text-align: center;
+    color: #f5f5f5;
+    animation: slideFade 1s ease;
+    position: relative; /* Added for z-index */
+    z-index: 10; /* Ensure it's above any other background element */
+  }
+
+  h1 {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    color: #ffffff;
+  }
+
+  .dashboard-links {
+    list-style-type: none;
+    padding: 0;
+  }
+
+  .dashboard-links li {
+    margin: 1.2rem 0;
+  }
+
+  .dashboard-links a {
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #00c6ff;
+    background: rgba(0, 198, 255, 0.15);
+    padding: 0.8rem 1.6rem;
+    border-radius: 30px;
+    transition: all 0.3s ease;
+    display: inline-block;
+    position: relative; /* Added for z-index */
+    z-index: 20; /* Ensure it's above the background */
+    pointer-events: auto; /* Ensure links are clickable */
+  }
+
+  .dashboard-links a:hover {
+    background: #00c6ff;
+    color: #000;
+    transform: scale(1.05);
+    box-shadow: 0 6px 18px rgba(0, 198, 255, 0.3);
+  }
+
+  @keyframes slideFade {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @media (max-width: 640px) {
+    .dashboard-container {
+      margin: 6rem 1rem 2rem 1rem;
+      padding: 2rem;
+    }
+  }
+</style>
+
+<div class="dashboard-container">
+  <h1>👩‍🏫 Welcome to Teacher Dashboard</h1>
+  <ul class="dashboard-links">
+    <li><a href="{% url 'register_student' %}">Register New Student</a></li>
+    <li><a href="{% url 'view_all_attendance' %}">View Attendance</a></li>
+    <li><a href="{% url 'mark_attendance' %}">Mark Attendance</a></li>
+  </ul>
+</div>
+{% endblock %}
